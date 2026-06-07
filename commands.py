@@ -144,6 +144,7 @@ class Commands(commands.Cog):
         what_to_say: str,
         channel: discord.TextChannel | None,
     ):
+        await ctx.respond("I lowk said that shit")
         if channel is None:
             await ctx.channel.send(what_to_say)  # pyright: ignore[reportAttributeAccessIssue, reportOptionalMemberAccess]
         else:
@@ -171,7 +172,7 @@ class Commands(commands.Cog):
             if react_list[string]["type"] == "file":
                 file_path = os.path.join(
                     os.path.dirname(__file__),
-                    "data/reacts/",
+                    constants.REACT_FILE_PATH,
                     react_list[string]["response"],
                 )
 

@@ -1,0 +1,10 @@
+{
+  "string to react to1": {
+    "response": "string to respond with",
+    "type": "text"
+  },
+  "string to react to2": {
+    "response": "file-to-send.gif",
+    "type": "file"
+  }
+}

@@ -1,6 +1,5 @@
 import json
 import logging
-import os
 import socket
 import time
 
@@ -36,13 +35,13 @@ def init_gif_json() -> None:
 
 
 def init_react_json() -> None:
-    initial_json = {"react_list": {}}
+    initial_json = {}
     save_json(initial_json, constants.REACT_JSON_PATH)
 
 
-def load_json(file: str) -> dict:
+def load_json(file_path: str) -> dict:
     try:
-        with open(file, "r") as f:
+        with open(file_path, "r") as f:
             return json.load(f)
     except FileNotFoundError:
         logger.warning("Couldn't load JSON file, returning empty dictionary")
