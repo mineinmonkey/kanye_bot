@@ -3,7 +3,6 @@ import logging
 import os
 import socket
 import time
-from mimetypes import init
 
 import constants
 

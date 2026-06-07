@@ -9,13 +9,14 @@ from discord.ext import commands
 import constants
 import utils
 
-logger = logging.getLogger()
+logger = logging.getLogger(__name__)
 
 
 class Commands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    # kanyecoin
     @commands.slash_command(description="Feeling freaky?", name="kanyecoin")
     async def kanye_coin(self, ctx: discord.ApplicationContext):
         user_id: str = str(ctx.user.id)
@@ -52,6 +53,7 @@ class Commands(commands.Cog):
 
         utils.save_json(counter_json, constants.COUNTER_JSON_PATH)
 
+    # kanyetotal
     @commands.slash_command(
         description="How many times have we felt freaky?", name="kanyetotal"
     )
@@ -76,6 +78,7 @@ class Commands(commands.Cog):
 
         await ctx.respond(f"You have flipped the /kanyecoin {user_flips} times")
 
+    # addgif
     @commands.slash_command(
         description="Add a gif to kanyecoin",
         name="addgif",
@@ -146,6 +149,7 @@ class Commands(commands.Cog):
         else:
             await channel.send(what_to_say)
 
+    # reaction
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
         if message.author.bot:
@@ -153,7 +157,7 @@ class Commands(commands.Cog):
 
         react_list: dict[str, dict[str, str]] = utils.load_json(
             constants.REACT_JSON_PATH
-        )["react_list"]
+        )
 
         found: list[tuple[int, str]] = [
             (message.content.lower().find(s), s)
